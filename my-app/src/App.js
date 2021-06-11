@@ -38,7 +38,7 @@ class Board extends React.Component {
   constructor(props){
     super(props);
     this.data = [
-      [0, 0, 0, 4], 
+      [0, 1, 2, 4], 
       [0, 1, 0, 0], 
       [0, 0, 0, 0], 
       [0, 0, 0, 0]
@@ -51,7 +51,7 @@ class Board extends React.Component {
       for (var l = 0; l<out.length; l++){
         if (l === 3){
           out[k][l] = <div>
-            <br /><Square value={getData(this.data[k][l])} key={uuidv4()} />
+            <Square value={getData(this.data[k][l])} key={uuidv4()} /><br />
           </div> 
         } else {
           out[k][l] = <Square value={getData(this.data[k][l])} key={uuidv4()} />;
