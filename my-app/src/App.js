@@ -38,8 +38,8 @@ class Board extends React.Component {
   constructor(props){
     super(props);
     this.data = [
+      [0, 0, 0, 4], 
       [0, 1, 0, 0], 
-      [0, 0, 0, 0], 
       [0, 0, 0, 0], 
       [0, 0, 0, 0]
     ];
@@ -47,21 +47,18 @@ class Board extends React.Component {
 
   render() {
     var out = [[],[],[],[]];
-    out[0][0] = <Square key={uuidv4()} value={getData(this.data[0][1])} />;
-    // for (var i = 0; i < this.data.length; i++){
-    //   for (var j = 0; j < this.data.length; j++){
-    //     if (this.data[i][j]===0){
-    //       out += <Square value = {[0, "#FFFFFF"]} />
-    //     } else {
-    //       out += <Square value = {getData(this.data[i][j])} />
-    //     }
-
-    //     if (i === 3){
-    //       out += <br />
-    //     }
-    //   }
-    // }
-    console.log(this.data)
+    for (var k = 0; k<out.length; k++){
+      for (var l = 0; l<out.length; l++){
+        if (l === 3){
+          out[k][l] = <div>
+            <br /><Square value={getData(this.data[k][l])} key={uuidv4()} />
+          </div> 
+        } else {
+          out[k][l] = <Square value={getData(this.data[k][l])} key={uuidv4()} />;
+        }
+      }
+    }
+    
     console.log(out);
     return <div>
       {out}
@@ -71,7 +68,7 @@ class Board extends React.Component {
 
 function Square (props) {
 
-  return <div style={{width:"50px", height:"50px", border:"1px", background: props.value[1], color: "white", textAlign:"center", lineHeight:"50px", fontSize:"36px", display:"inline-block"}}>{props.value[0]}</div>
+  return <div style={{width:"50px", height:"50px", border:"1px", background: props.value[1], color: "white", textAlign:"center", lineHeight:"50px", fontSize:"36px", display:"inline-block", margin:"5px"}}>{props.value[0]}</div>
 }
 
 export default App;
