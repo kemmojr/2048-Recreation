@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   
@@ -11,6 +12,7 @@ function App() {
 
 function getData(i){
   const values = [
+    [0, "#ffffff"],
     [2,"#eee4da"], 
     [4,"#ece0c8"], 
     [8,"#f2b179"], 
@@ -35,8 +37,8 @@ function getData(i){
 class Board extends React.Component {
   constructor(props){
     super(props);
-    var data = [
-      [0, 2, 0, 0], 
+    this.data = [
+      [0, 1, 0, 0], 
       [0, 0, 0, 0], 
       [0, 0, 0, 0], 
       [0, 0, 0, 0]
@@ -44,20 +46,23 @@ class Board extends React.Component {
   }
 
   render() {
-    out = null;
-    for (var i = 0; i < length(data); i++){
-      for (var j = 0; j < length(data); j++){
-        if (data[i][j]==0){
-          out += <Square value = {[0, "#FFFFFF"]} />
-        } else {
-          out += <Square value = {getData(data[i][j])} />
-        }
+    var out = [[],[],[],[]];
+    out[0][0] = <Square key={uuidv4()} value={getData(this.data[0][1])} />;
+    // for (var i = 0; i < this.data.length; i++){
+    //   for (var j = 0; j < this.data.length; j++){
+    //     if (this.data[i][j]===0){
+    //       out += <Square value = {[0, "#FFFFFF"]} />
+    //     } else {
+    //       out += <Square value = {getData(this.data[i][j])} />
+    //     }
 
-        if (i == 3){
-          out += <br />
-        }
-      }
-    }
+    //     if (i === 3){
+    //       out += <br />
+    //     }
+    //   }
+    // }
+    console.log(this.data)
+    console.log(out);
     return <div>
       {out}
     </div>
