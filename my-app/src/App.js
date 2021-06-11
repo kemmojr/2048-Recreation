@@ -38,21 +38,32 @@ class Board extends React.Component {
   constructor(props){
     super(props);
     this.data = [
-      [0, 1, 2, 4], 
-      [0, 1, 0, 0], 
-      [0, 0, 0, 0], 
-      [0, 0, 0, 0]
+      [0, 1, 2, 4, 0], 
+      [0, 1, 0, 0, 0], 
+      [0, 0, 0, 0, 0], 
+      [0, 0, 0, 0, 0]
     ];
+  }
+  
+  move(direction){
+    if (direction === "up"){
+      //TODO
+    } else if (direction === "down"){
+      //TODO
+    } else if (direction === "left"){
+      //TODO
+    } else if (direction === "right"){
+      //TODO
+    }
+  
   }
 
   render() {
     var out = [[],[],[],[]];
     for (var k = 0; k<out.length; k++){
-      for (var l = 0; l<out.length; l++){
-        if (l === 3){
-          out[k][l] = <div>
-            <Square value={getData(this.data[k][l])} key={uuidv4()} /><br />
-          </div> 
+      for (var l = 0; l<out.length+1; l++){
+        if (l === 4){
+          out[k][l] = <br />
         } else {
           out[k][l] = <Square value={getData(this.data[k][l])} key={uuidv4()} />;
         }
@@ -68,7 +79,8 @@ class Board extends React.Component {
 
 function Square (props) {
 
-  return <div style={{width:"50px", height:"50px", border:"1px", background: props.value[1], color: "white", textAlign:"center", lineHeight:"50px", fontSize:"36px", display:"inline-block", margin:"5px"}}>{props.value[0]}</div>
+return <div style={{width:"50px", height:"50px", border:"1px", background: props.value[1], color: "white", textAlign:"center", lineHeight:"50px", fontSize:"36px", display:"inline-block", margin:"5px"}}>{props.value[0]}</div>
 }
+
 
 export default App;
