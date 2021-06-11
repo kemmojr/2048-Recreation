@@ -38,16 +38,33 @@ class Board extends React.Component {
   constructor(props){
     super(props);
     this.data = [
-      [0, 1, 2, 4, 0], 
-      [0, 1, 0, 0, 0], 
-      [0, 0, 0, 0, 0], 
-      [0, 0, 0, 0, 0]
+      [1, 2, 3, 4, 0], 
+      [1, 2, 3, 4, 0], 
+      [1, 2, 3, 4, 0], 
+      [1, 2, 3, 4, 0]
     ];
   }
   
   move(direction){
     if (direction === "up"){
-      //TODO
+      var columns = [[], [], [], []]
+      for (var i = 0; i < this.data.length; i++){
+        for (var j = 0; j < this.data.length; j++){
+          columns[j].push(this.data[i][j]);
+        }
+      }
+
+      for (i = 0; i < columns[0].length; i++){
+        var col = columns[0];
+        for (j = 0; j < this.data.length; j++){
+          if (col[i]===col[j]){
+            col[i] = col[i] + col[j];
+            col[j] = 0;
+          }
+        }
+      }
+      
+      console.log(columns);
     } else if (direction === "down"){
       //TODO
     } else if (direction === "left"){
@@ -69,8 +86,7 @@ class Board extends React.Component {
         }
       }
     }
-    
-    console.log(out);
+    this.move("up")
     return <div>
       {out}
     </div>
