@@ -47,7 +47,7 @@ class Board extends React.Component {
   
   move(direction){
     if (direction === "up"){
-      var columns = [[], [], [], []]
+      var columns = [[], [], [], []];
       for (var i = 0; i < this.data.length; i++){
         for (var j = 0; j < this.data.length; j++){
           columns[j].push(this.data[i][j]);
@@ -72,8 +72,21 @@ class Board extends React.Component {
           }
         }
       }
+
+      var rows = [[], [], [], []];
+      for (i = 0; i < columns.length; i++){
+        for (j = 0; j < columns.length; j++){
+          rows[j].push(columns[i][j]);
+        }
+      }
+
+      for (i = 0; i < rows.length; i++){
+        for (j = 0; j < rows.length; j++){
+          this.data[i][j] = rows[i][j];
+        }
+      }
       
-      console.log(columns);
+      console.log(rows);
     } else if (direction === "down"){
       //TODO
     } else if (direction === "left"){
@@ -85,6 +98,8 @@ class Board extends React.Component {
   }
 
   render() {
+    this.move("up")
+    console.log(this.data)
     var out = [[],[],[],[]];
     for (var k = 0; k<out.length; k++){
       for (var l = 0; l<out.length+1; l++){
@@ -95,7 +110,6 @@ class Board extends React.Component {
         }
       }
     }
-    this.move("up")
     return <div>
       {out}
     </div>
