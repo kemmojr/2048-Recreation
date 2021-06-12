@@ -38,9 +38,9 @@ class Board extends React.Component {
   constructor(props){
     super(props);
     this.data = [
-      [1, 2, 3, 4, 0], 
-      [0, 0, 0, 0, 0], 
-      [0, 0, 0, 0, 0], 
+      [4, 0, 0, 0, 0], 
+      [0, 0, 4, 0, 0], 
+      [2, 2, 0, 0, 0], 
       [1, 2, 3, 4, 0]
     ];
   }
@@ -71,16 +71,19 @@ class Board extends React.Component {
             } else if (k === j+2 && col[k] === col[j] && col[j+1] === 0 && col[k] !== 0){
               col[j] = col[j] + 1;
               col[k] = 0;
-            }else if (k === j+3 && col[k] === col[j] && col[j+1] === 0 && col[j+2] === 0){
+            }else if (k === j+3 && col[k] === col[j] && col[j+1] === 0 && col[j+2] === 0 && col[j] !== 0){
               col[j] = col[j] + 1;
               col[k] = 0;
-            } else if (col[j] === 0){
+            } 
+            
+            if (col[j] === 0){
               for (l = j; l < col.length-1; l++){
                 col[l] = col[l+1];
                 if (l === col.length-2){
                   col[l+1] = 0;
                 }
               }
+              
             }
           }
         }
