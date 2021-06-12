@@ -54,12 +54,21 @@ class Board extends React.Component {
         }
       }
 
-      for (i = 0; i < columns[0].length; i++){
-        var col = columns[0];
-        for (j = 0; j < this.data.length; j++){
-          if (col[i]===col[j]){
-            col[i] = col[i] + col[j];
-            col[j] = 0;
+      for (i = 0; i < columns.length; i++){
+        var col = columns[i];
+        for (j = 0; j < col.length; j++){
+          for (var k = 1; k < col.length; k++){
+            if (k === j+1 && col[k] === col[j]){
+              if (col[k] !== 0){
+                col[j] = col[j] + 1;
+                for (var l = k; l < col.length-1; l++){
+                  col[l] = col[l+1];
+                  if (l === col.length-2){
+                    col[l+1] = 0;
+                  }
+                }
+              }
+            }
           }
         }
       }
