@@ -40,7 +40,7 @@ class Board extends React.Component {
     this.data = [
       [1, 2, 3, 4, 0], 
       [0, 0, 0, 0, 0], 
-      [1, 2, 3, 4, 0], 
+      [0, 0, 0, 0, 0], 
       [1, 2, 3, 4, 0]
     ];
   }
@@ -68,7 +68,10 @@ class Board extends React.Component {
                   }
                 }
               }
-            } else if (k === j+2 && col[k] === col[j] && col[j+1] === 0){//TODO: get working with a gap
+            } else if (k === j+2 && col[k] === col[j] && col[j+1] === 0){
+              col[j] = col[j] + 1;
+              col[k] = 0;
+            }else if (k === j+3 && col[k] === col[j] && col[j+1] === 0 && col[j+2] === 0){
               col[j] = col[j] + 1;
               col[k] = 0;
             } else if (col[j] === 0){
