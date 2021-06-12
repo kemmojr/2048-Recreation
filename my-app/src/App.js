@@ -39,7 +39,7 @@ class Board extends React.Component {
     super(props);
     this.data = [
       [1, 2, 3, 4, 0], 
-      [1, 2, 3, 4, 0], 
+      [0, 0, 0, 0, 0], 
       [1, 2, 3, 4, 0], 
       [1, 2, 3, 4, 0]
     ];
@@ -68,6 +68,25 @@ class Board extends React.Component {
                   }
                 }
               }
+            } else if (col[j] === 0){
+              for (l = j; l < col.length-1; l++){
+                col[l] = col[l+1];
+                if (l === col.length-2){
+                  col[l+1] = 0;
+                }
+              }
+            } else if (k === j+2 && col[k] === col[j] && col[j+1] === 0){//TODO: get working with a gap
+              if (col[k] !== 0){
+                col[j] = col[j] + 1;
+                for (l = k-1; l < col.length-1; l++){
+                  col[l] = col[l+1];
+                  if (l === col.length-2){
+                    col[l+1] = 0;
+                  }
+                }
+
+              }
+
             }
           }
         }
