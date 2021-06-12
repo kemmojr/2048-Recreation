@@ -68,7 +68,7 @@ class Board extends React.Component {
                   }
                 }
               }
-            } else if (k === j+2 && col[k] === col[j] && col[j+1] === 0){
+            } else if (k === j+2 && col[k] === col[j] && col[j+1] === 0 && col[k] !== 0){
               col[j] = col[j] + 1;
               col[k] = 0;
             }else if (k === j+3 && col[k] === col[j] && col[j+1] === 0 && col[j+2] === 0){
