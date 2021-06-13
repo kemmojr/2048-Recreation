@@ -61,6 +61,7 @@ class Board extends React.Component {
             if (k === j+1 && col[k] === col[j]){
               if (col[k] !== 0){
                 col[j] = col[j] + 1;
+                col[k] = 0;
                 for (var l = k; l < col.length-1; l++){
                   col[l] = col[l+1];
                   if (l === col.length-2){
@@ -74,8 +75,12 @@ class Board extends React.Component {
             }else if (k === j+3 && col[k] === col[j] && col[j+1] === 0 && col[j+2] === 0 && col[j] !== 0){
               col[j] = col[j] + 1;
               col[k] = 0;
-            } 
-            
+            }            
+          }
+          
+        }
+        for (j = 0; j < col.length; j++){
+          for (var k = 1; k < col.length; k++){
             if (col[j] === 0){
               for (l = j; l < col.length-1; l++){
                 col[l] = col[l+1];
@@ -83,10 +88,10 @@ class Board extends React.Component {
                   col[l+1] = 0;
                 }
               }
-              
             }
-          }
+          }      
         }
+
       }
 
       var rows = [[], [], [], []];
