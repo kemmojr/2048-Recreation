@@ -38,9 +38,9 @@ class Board extends React.Component {
   constructor(props){
     super(props);
     this.data = [
-      [0, 0, 0, 0, 0], 
-      [1, 2, 3, 4, 0], 
-      [0, 0, 3, 0, 0], 
+      [3, 1, 0, 0, 0], 
+      [1, 1, 2, 3, 0], 
+      [0, 0, 3, 1, 0], 
       [1, 2, 4, 4, 0]
     ];
   }
